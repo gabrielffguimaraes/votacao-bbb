@@ -1,0 +1,36 @@
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: admin
+      username: root
+      password: root
+  kafka:
+    consumer:
+      bootstrap-server: 127.0.0.1:9092
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+      json:
+        trusted:
+          packages: (*)
+      properties:
+        spring:
+          deserializer:
+            value:
+              delegate:
+                class: org.springframework.kafka.support.serializer.JsonDeserializer
+          json:
+            add:
+              type:
+                headers: false
+
+      #value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+
+
+
+
+
+
+
